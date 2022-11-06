@@ -10,8 +10,15 @@ publish="public/"
     no-cache,
     no-store,
     must-revalidate'''
-    Permissions-Policy = "interest-cohort=()"
-    X-Frame-Options = "DENY"
-    X-XSS-Protection = "1"
-    X-Content-Type-Options = "nosniff"
+
+[[headers]]
+  for = "/full/*"
+  [headers.values]
+    cache-control = "max-age=600"
+    access-control-allow-origin = "*"
+
+[[headers]]
+  for = "/chunked/*"
+  [headers.values]
+    cache-control = "max-age=600"
     access-control-allow-origin = "*"
