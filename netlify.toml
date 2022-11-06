@@ -14,9 +14,4 @@ publish="public/"
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1"
     X-Content-Type-Options = "nosniff"
-
-[[headers]]
-  for = "/*.sqlite"
-  [headers.values]
-    cache-control = "max-age=600"
     access-control-allow-origin = "*"
