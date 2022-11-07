@@ -11,6 +11,10 @@ publish="public/"
     no-store,
     must-revalidate'''
 
+[[edge_functions]]
+  path = "/chunked/*"
+  function = "cors"
+
 [[headers]]
   for = "/full/*"
   [headers.values]
