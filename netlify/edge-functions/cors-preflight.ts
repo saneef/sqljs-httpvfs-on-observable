@@ -10,6 +10,9 @@ function isAllowedOrign(str: string) {
   );
 }
 
+// CORS Preflight Request Reference
+// https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request
+
 export default async (request: Request, _context: Context) => {
   if (request.method !== "OPTIONS") {
     return;
@@ -34,8 +37,11 @@ export default async (request: Request, _context: Context) => {
   });
   response.headers.set("Access-Control-Allow-Origin", reqOrigin);
   response.headers.set("Access-Control-Allow-Methods", allowMethods);
-  response.headers.set("Access-Control-Allow-Headers", reqHeaders);
   response.headers.set("Access-Control-Max-Age", `${60 * 60 * 24}`);
+
+  // Need "Access-Control-Allow-Headers" to make it work in Firefox
+  // See: https://stackoverflow.com/a/69479005
+  response.headers.set("Access-Control-Allow-Headers", reqHeaders);
 
   return response;
 };

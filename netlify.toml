@@ -13,7 +13,11 @@ publish="public/"
 
 [[edge_functions]]
   path = "/chunked/*"
-  function = "cors"
+  function = "cors-preflight"
+
+[[edge_functions]]
+  path = "/full/*"
+  function = "cors-preflight"
 
 [[headers]]
   for = "/full/*"
